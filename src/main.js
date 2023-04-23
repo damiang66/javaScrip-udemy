@@ -1,30 +1,15 @@
-import {facturas,buscarPorId} from './datos/facturas';
-//find retorna un objeto que buscamos segun la condicion
-const findByIdFactura = facturas.find(f=>{
-    if(f.id==3){
-        return f;
-    }
-})
-// otra manera de usar el find
-console.log(findByIdFactura);
-const findByNombre = facturas.find(f=> f.nombre==='compra cigarrillos')
-
-//filtrar
-
-const filtrarPorId = facturas.filter(f=> f.id>1);
-console.log(filtrarPorId);
-/*
-const filtrarPorProducto = facturas.filter(f => f.items.includes({
-    producto: "lucky",
-                precio: 100,
-                cantidad:2
-}))
-console.log(filtrarPorProducto);
-*/
-
-// some devuelte un boolean
-const resultado = facturas.some(f=> f.cliente.nombre==='camila');
-console.log(resultado);
-//exportado de facturas
-console.log('buscar por id');
-buscarPorId(1);
+// manipulando html
+const buscarClientePorId = async ()=>{
+    const respuesta = await fetch('http://localhost:8080/api/cliente');
+    const data = await respuesta.json();
+    const ul = document.createElement('ul');
+   data.forEach(cliente =>{
+    const li = document.createElement('li');
+    li.innerText = cliente.nombre;
+    ul.append(li)
+    console.log(cliente.nombre);
+   })
+   document.getElementById('root').append(ul)
+}
+buscarClientePorId();
+//console.log(cliente);

@@ -1,5 +1,6 @@
 
-export const facturas=[
+
+ const facturas=[
     {
         id: 1,
         nombre: 'compras de oficina',
@@ -94,14 +95,18 @@ export const facturas=[
     
     
 ];
-export const buscarPorId =(id)=>{
+ const buscarPorId =(id)=>{
     const filtrarPorId = facturas.filter(f=> f.id===id);
     console.log(filtrarPorId);
 }
-export default (id)=>{
+ const buscarPorId2= (id)=>{
     const filtrarPorId = facturas.filter(f=> f.id===id);
     console.log(filtrarPorId);
 }
-export const buscarPorIdPromesa = (id)=>{
-    return facturas.find(f=>f.id===id);
+export{
+    buscarPorId,
+    facturas,
+    buscarPorId2 as default
+
+
 }
